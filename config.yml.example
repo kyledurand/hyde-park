@@ -1,0 +1,6 @@
+---
+:api_key: YOUR_API_KEY
+:password: YOUR_API_PASSWORD
+:store: YOUR_STORE
+:whitelist_files:
+  - layout/emails/email_layout.liquid

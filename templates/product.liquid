@@ -1,0 +1,32 @@
+
+{% include 'single-product' %}
+
+{% if shop.products_count > 1 %}
+  <div class="card__tag-along">
+    <h3 class="type type--heading type--heading-3">More from {{ shop.name }}</h3>
+
+    {% assign minimum_product_spaces = 3 %}
+    {% assign too_many_products = shop.products_count > (minimum_product_spaces | plus: 1) %}
+
+    <div class="image-grid" data-other-images-count="{{ shop.products_count | minus: 1 }}">
+      {% for other_product in collections.all.products %}
+        {% if other_product.title != product.title %}
+          <!-- Ugly hack to get background-size in old IE. -->
+          <a class="image-grid__item" href="{{ other_product.url }}" style="background-image: url({{ other_product.featured_image.src | img_url : 'compact' }}); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{ other_product.featured_image.src | img_url : 'compact' }}', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{ other_product.featured_image.src | img_url : 'compact' }}', sizingMethod='scale');"">
+            <h4 class="helpers--visually-hidden">{{ other_product.title }}</h4>
+          </a>
+        {% endif %}
+      {% endfor %}
+
+      {% if too_many_products %}
+        <a href="https://{{ shop.domain }}" class="image-grid__item image-grid__item--placeholder">
+          <span class="image image--placeholder">
+            <span>+ <span class="image-grid__hidden-count">some</span></span>
+            <br>
+            <span>more</span>
+          </span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

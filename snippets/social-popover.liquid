@@ -1,0 +1,21 @@
+<button class="social-popover__activator">
+  <span class="helpers--top-nudge media__helpers--hide-to-card-flip">Share</span>
+  {% include 'inline-icon' with 'social-activator, icon--social, media__helpers--hide-after-card-flip' %}
+</button>
+<div class="social-popover">
+  <div class="social-popover__tip"></div>
+  <div class="social-popover__content social-sharing">
+    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="social-popover__button share-facebook">
+      {% include 'inline-icon' with 'facebook--circle, icon--social' %}
+    </a>
+    <a target="_blank" href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ product.title | strip_html | url_param_escape }}" class="social-popover__button share-twitter">
+      {% include 'inline-icon' with 'twitter--circle, icon--social' %}
+    </a>
+    <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ product.featured_image | product_img_url: '1024x1024' | prepend: 'http:' }}&amp;description={{ shareTitle }}" class="share-pinterest social-popover__button">
+      {% include 'inline-icon' with 'pinterest--circle, icon--social' %}
+    </a>
+    <a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="share-google social-popover__button">
+      {% include 'inline-icon' with 'google--circle, icon--social' %}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+//    _______   _____  ___   ___ ___    _   ___ _  ___   __
+//   |_   _\ \ / / _ \/ _ \ / __| _ \  /_\ | _ \ || \ \ / /
+//     | |  \ V /|  _/ (_) | (_ |   / / _ \|  _/ __ |\ V /
+//     |_|   |_| |_|  \___/ \___|_|_\/_/ \_\_| |_||_| |_|
+//
+// =========================================================================================
+// =========================================================================================
+//
+// Use this stylesheet for typographic styles, including components and helpers
+// (all of which should be namespaced under the `type` class name).
+
+
+
+body {
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: "DINWeb", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: color(black);
+  @include font-size(body);
+  -webkit-font-smoothing: subpixel-antialiased; // fixes text jitter in safari
+}
+
+button,
+input {
+  font-family: "DINWeb", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+
+
+//    ___ _    ___ __  __ ___ _  _ _____ ___
+//   | __| |  | __|  \/  | __| \| |_   _/ __|
+//   | _|| |__| _|| |\/| | _|| .` | | | \__ \
+//   |___|____|___|_|  |_|___|_|\_| |_| |___/
+//
+// ===============================================================
+
+
+.type--heading {
+  margin: 0;
+  color: color(black);
+  margin-top: default(small-spacing);
+
+  + .type--paragraph,
+  + p {
+    margin: default(small-spacing) 0 default(large-spacing);
+  }
+}
+
+.type--heading-1 {
+  @include font-size(heading-1);
+  font-weight: 600;
+}
+
+.type--heading-2 {
+  @include font-size(heading-2);
+  font-weight: 400;
+}
+
+.type--paragraph {
+  margin: 0;
+  line-height: default(line-height);
+  color: color(gray-darker);
+  font-weight: 300;
+  @include font-size(paragraph-large);
+
+  + .type--paragraph, + p:not(:first-child) {
+    margin-top: default(large-spacing);
+  }
+}
+
+.type--price {
+  letter-spacing: 0.05em;
+  color: color(white);
+  line-height: 1;
+  font-weight: 400;
+}
+
+
+
+//    _  _ ___ _    ___ ___ ___  ___
+//   | || | __| |  | _ \ __| _ \/ __|
+//   | __ | _|| |__|  _/ _||   /\__ \
+//   |_||_|___|____|_| |___|_|_\|___/
+//
+// ===============================================================
+
+
+// Force the text to appear on a single line.
+.type--one-line {
+  @extend %ellipsis;
+  line-height: 1;
+  margin: 0;
+}
+
+// Centered text, duh
+.type--centered {
+  text-align: center;
+}
+
+.type--subdued {
+  color: color(gray-dark);
+}
+
+.type--dark {
+  color: color(black);
+}
+
+.type--accentuated {
+  color: color(blue);
+}
+
+//    ___ ___  _  _ _____   ___ ___ _____ _____ ___ _  _  ___ ___
+//   | __/ _ \| \| |_   _| / __| __|_   _|_   _|_ _| \| |/ __/ __|
+//   | _| (_) | .` | | |   \__ \ _|  | |   | |  | || .` | (_ \__ \
+//   |_| \___/|_|\_| |_|   |___/___| |_|   |_| |___|_|\_|\___|___/
+//
+// ===============================================================
+
+
+// Source: https://github.com/kennethormandy/normalize-opentype.css/blob/master/normalize-opentype.scss
+// Turns on kerning, standard ligatures, and proportional numerals.
+html,
+body {
+  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 0, "lnum" 0, "dlig" 0;
+}
+
+// Source: https://github.com/kennethormandy/normalize-opentype.css/blob/master/normalize-opentype.scss
+// Turns on discretionary ligatures for the larger headings.
+h1,
+h2,
+h3 {
+  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 0, "lnum" 0, "dlig" 1; /* 1. */
+}
+
+// Source: https://github.com/kennethormandy/normalize-opentype.css/blob/master/normalize-opentype.scss
+// For code, turn off kerning and ligatures, turn on tabular numerals and slashed 0.
+pre,
+code {
+  font-feature-settings: "kern" 0, "liga" 0, "dlig" 0, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
+}
+
+// Source: https://github.com/kennethormandy/normalize-opentype.css/blob/master/normalize-opentype.scss
+// Turn on superscript numerals.
+sup {
+  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
+}
+
+// Source: https://github.com/kennethormandy/normalize-opentype.css/blob/master/normalize-opentype.scss
+// Turn on subscript numerals.
+sub {
+  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "subs" 1;
+}

@@ -1,0 +1,27 @@
+<div class="sub-header">
+  <div class="sub-header__wrapper">
+    <div class="sub-header__content">
+
+      <div class="link-home">
+        <a href="/" class="link-home__avatar">
+          <div class="avatar__image media__helpers--hide-after-card-flip" style="background-image: url({{ shop.avatar_url }}); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{ shop.avatar_url }}',sizingMethod='scale');"></div>
+        </a>
+        <div class="link-home__label">
+          <span class="link-home__arrow-icon media__helpers--hide-to-card-flip">{% include 'inline-icon' with 'arrow, icon--10, icon--rotate-90, helpers--top-nudge' %}</span>
+          <a class="link-home__user-name" href="/"><span class="icon__text helpers--top-nudge">{{ shop.name }}</span></a>
+        </div>
+      </div>
+
+      <div class="user-info media__helpers--hide-to-card-flip">
+        <a href="/">
+          <div class="avatar__image avatar__image--large" style="background-image: url({{ shop.avatar_url }}); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{ shop.avatar_url }}',sizingMethod='scale');" ></div>
+          <h2 class="user__name type--heading type--heading-1">{{ shop.name }}</h2>
+        </a>
+        {% unless shop.description == blank %}
+          <p class="user__description">{{ shop.description }}</p>
+        {% endunless %}
+      </div>
+
+    </div>
+  </div>
+</div>

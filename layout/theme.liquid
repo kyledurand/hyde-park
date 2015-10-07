@@ -1,0 +1,50 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" />
+  <link rel="canonical" href="{{ case_sensitive_canonical_url }}">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  {% include 'social-meta-tags' %}
+  {{ 'fonts.css' | asset_url | stylesheet_tag }}
+  {{ 'modernizr.js' | asset_url | script_tag }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+  {% include 'oldIE-js' %}
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  {{ '//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.3/fastclick.min.js' | script_tag }}
+  {% include 'google-analytics' %}
+</head>
+<body>
+  <div class="page page--{{ template }}">
+    {% include 'header' %}
+
+    <div class="page__content{% unless shop.products_count > 0 %} page__content--no-products{% endunless %}{% unless shop.description == blank %} has-shop-description{% endunless %}">
+      {{ content_for_layout }}
+    </div>
+
+    {% include 'footer' %}
+  </div>
+
+  {% include 'modals' %}
+
+  <script>
+    window.moneyFormatWithCurrency = '{{ shop.money_with_currency_format }}';
+    window.product = {{ product | json }};
+    $(function() {
+      FastClick.attach(document.body);
+    });
+  </script>
+
+  {{ 'theme.js' | asset_url | script_tag }}
+
+</body>
+</html>
+

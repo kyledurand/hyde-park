@@ -1,0 +1,43 @@
+//    ___ ___  _  _ _____   ___ ___ _______ ___
+//   | __/ _ \| \| |_   _| / __|_ _|_  / __/ __|
+//   | _| (_) | .` | | |   \__ \| | / /| _|\__ \
+//   |_| \___/|_|\_| |_|   |___/___/___|___|___/
+//
+// =========================================================================================
+// =========================================================================================
+//
+// The stylesheet exists as a single place to manage all font sizes. To use
+// a font size in your stylesheet, follow this procedure:
+//
+// 1. Add a well-named entry to the `$font-sizes` map.
+// 2. If you wish to include a `font-size` declaration in your stylesheet,
+//    `@include font-size()`, passing it the name of the component to retrieve
+//    the font-size for.
+// 3. Retrieving the actual font-size dimension (for example, to be used in a
+//    calculation to determine necessary padding) should be done by passing the
+//    same arguments discussed above to the `font-size` *function*.
+
+
+
+$base-font-size: 14px;
+
+$FONT-SIZES: (
+  body: $base-font-size,
+  button: 15px,
+
+  paragraph: 14px,
+  paragraph-large: 16px,
+
+  heading-1: 18px,
+  heading-1-large: 22px,
+  heading-2: 16px,
+  heading-2-large: 20px
+);
+
+@function font-size($element) {
+  @return map-get($FONT-SIZES, $element);
+}
+
+@mixin font-size($element) {
+  font-size: font-size($element);
+}

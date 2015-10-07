@@ -1,0 +1,36 @@
+//    ___  ___ ___ _  _   _ _  _____ ___
+//   |   \| __| __/_\| | | | ||_   _/ __|
+//   | |) | _|| _/ _ \ |_| | |__| | \__ \
+//   |___/|___|_/_/ \_\___/|____|_| |___/
+//
+// =========================================================================================
+// =========================================================================================
+//
+// This stylesheet decalres default values for common visual elements. Use this
+// map in place of declaring variables, which could be slightly harder to remember
+// the name of and present more of a risk of naming conflicts. To add a default,
+// add a descriptive key name to the map. Then, retrieve the value using `default($property)`,
+// If the property you are adding is also a valid CSS property (i.e., default borders or
+// border radii), you can directly include that declaration in CSS using the mixin
+// version of `default()`.
+
+
+$DEFAULTS: (
+  spacing: 16px,
+  large-spacing: 32px,
+  small-spacing: 8px,
+  small-border-radius: 2px,
+  border-radius: 3px,
+  line-height: 1.4,
+  letter-spacing: 1.2px,
+  border: 2px solid color(horizontal-rule),
+  linear-gradient: linear-gradient(to top, rgba(color(menu-gradient), 0.6), rgba(color(menu-gradient), 0))
+);
+
+@function default($property) {
+  @return map-get($DEFAULTS, $property);
+}
+
+@mixin default($property) {
+  #{$property}: default($property);
+}

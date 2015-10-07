@@ -1,0 +1,42 @@
+//    ___   _   ___ ___
+//   | _ ) /_\ / __| __|
+//   | _ \/ _ \\__ \ _|
+//   |___/_/ \_\___/___|
+//
+// =========================================================================================
+// =========================================================================================
+//
+// Use this stylesheet for **necessary** resets and properties affecting large numbers
+// of elements that doesn't relate to a component.
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: color(black);
+}
+
+button {
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+img {
+  border: none;
+}

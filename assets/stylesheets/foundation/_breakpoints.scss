@@ -1,0 +1,174 @@
+$BREAKPOINTS: (
+  stack: 400px,
+  stack-large: 720px,
+  stack-flip: 1024px
+);
+
+$BREAKPOINT_INCREMENTS: (
+  px: 1px,
+  vw: 1vw
+);
+
+@function breakpoint-value-for($breakpoint) {
+  @return map-get($BREAKPOINTS, $breakpoint);
+}
+
+@function breakpoint-clean-value($point) {
+  @if type-of($point) == number {
+    @return $point;
+  }
+
+  @return breakpoint-value-for($point);
+}
+
+@function breakpoint-increment-for($value) {
+  @return map-get($BREAKPOINT_INCREMENTS, unit($value));
+}
+
+@function breakpoint-default-inclusivity($value, $default) {
+  $inclusivity: null;
+  @if length($value) > 1 { $inclusivity: nth($value, 2); }
+
+  @if $inclusivity {
+    @return $inclusivity == inclusive;
+  } @else {
+    @return $default;
+  }
+}
+
+@function breakpoint-adjusted-for-inclusivity($value, $min-or-max, $inclusive: false) {
+  $value: breakpoint-clean-value($value);
+
+  @if not $inclusive {
+    @if $min-or-max == min {
+      $value: $value + breakpoint-increment-for($value);
+    } @else {
+      $value: $value - breakpoint-increment-for($value);
+    }
+  }
+
+  @return "(#{$min-or-max}-width: #{$value})";
+}
+
+@function breakpoint-retinize-media-query($media-query) {
+  @return "#{$media-query} and (-webkit-min-device-pixel-ratio: 2), #{$media-query} and (min-resolution: 192dpi)";
+}
+
+
+@mixin breakpoint-after($point) {
+  @media screen and #{breakpoint-adjusted-for-inclusivity($point, min)} {
+    @content;
+  }
+}
+
+@mixin after($point) { @include breakpoint-after($point) { @content; } }
+
+@mixin breakpoint-from($point) {
+  @media screen and #{breakpoint-adjusted-for-inclusivity($point, min, true)} {
+    @content;
+  }
+}
+
+@mixin from($point) { @include breakpoint-from($point) { @content; } }
+
+@mixin breakpoint-before($point) {
+  @media screen and #{breakpoint-adjusted-for-inclusivity($point, max)} {
+    @content;
+  }
+}
+
+@mixin before($point) { @include breakpoint-before($point) { @content; } }
+
+@mixin breakpoint-to($point) {
+  @media screen and #{breakpoint-adjusted-for-inclusivity($point, max, true)} {
+    @content;
+  }
+}
+
+@mixin to($point) { @include breakpoint-to($point) { @content; } }
+
+
+@mixin breakpoint($after: null, $before: null, $from: null, $to: null, $until: null, $retina: false) {
+  $min-width: null;
+  $max-width: null;
+  $min-inclusive: null;
+  $max-inclusive: null;
+
+  // $after defaults to exclusive
+  @if $after {
+    $min-width: nth($after, 1);
+    $min-inclusive: breakpoint-default-inclusivity($after, false);
+  }
+
+  // $from defaults to inclusive
+  @if $from {
+    $min-width: nth($from, 1);
+    $min-inclusive: breakpoint-default-inclusivity($from, true);
+  }
+
+  // $before defaults to exclusive
+  @if $before {
+    $max-width: nth($before, 1);
+    $max-inclusive: breakpoint-default-inclusivity($before, false);
+  }
+
+  // $to defaults to inclusive
+  @if $to {
+    $max-width: nth($to, 1);
+    $max-inclusive: breakpoint-default-inclusivity($to, true);
+  }
+
+  // $until defaults to exclusive
+  @if $until {
+    $max-width: nth($until, 1);
+    $max-inclusive: breakpoint-default-inclusivity($until, false);
+  }
+
+  @if $max-width { $max-width: breakpoint-adjusted-for-inclusivity($max-width, max, $max-inclusive); }
+  @if $min-width { $min-width: breakpoint-adjusted-for-inclusivity($min-width, min, $min-inclusive); }
+
+  $media-query: "screen";
+  @if $min-width { $media-query: $media-query + " and #{$min-width}"; }
+  @if $max-width { $media-query: $media-query + " and #{$max-width}"; }
+  @if $retina { $media-query: breakpoint-retinize-media-query($media-query); }
+
+  @media #{$media-query} {
+    @content;
+  }
+}
+
+@mixin print() {
+  @media print { @content; }
+}
+
+@mixin retina() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { @content; }
+}
+
+
+@each $breakpoint, $width in $BREAKPOINTS {
+  .media__helpers--hide-before-#{$breakpoint} {
+    @include breakpoint-before($width) {
+      display: none !important;  //Important required to override any "display" attributes the element may have.
+    }
+  }
+
+  .media__helpers--hide-after-#{$breakpoint} {
+    @include breakpoint-after($width) {
+      display: none !important;
+    }
+  }
+
+  .media__helpers--hide-from-#{$breakpoint} {
+    @include breakpoint-from($width) {
+      display: none !important;
+    }
+  }
+
+  .media__helpers--hide-to-#{$breakpoint} {
+    @include breakpoint-to($width) {
+      display: none !important;
+    }
+  }
+
+}

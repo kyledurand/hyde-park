@@ -1,0 +1,32 @@
+//    __  __ _____  _____ _  _ ___
+//   |  \/  |_ _\ \/ /_ _| \| / __|
+//   | |\/| || | >  < | || .` \__ \
+//   |_|  |_|___/_/\_\___|_|\_|___/
+//
+// =========================================================================================
+// =========================================================================================
+//
+// Mixins are used to include common functionality that either requires
+// a variable to determine the exact declarations to make, or that needs
+// to include the passed CSS declarations in some way. When these are not
+// necessary, consider using a placeholder instead!
+
+@mixin no-touch {
+  .no-touch & { @content; }
+}
+
+@mixin touch {
+  .touch & { @content; }
+}
+
+@mixin no-js {
+  .no-js & { @content; }
+}
+
+@mixin page-not-found {
+  .page--404 & { @content;}
+}
+
+@mixin product-unavailable {
+  .product-unavailable & { @content; }
+}

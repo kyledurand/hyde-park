@@ -1,0 +1,7 @@
+  {% if product.images.size > 1 %}
+    <div class="pswp__navigation">
+      {% for image in product.images %}
+        <button class="pswp__navigation__link" data-nav-index="{{ forloop.index0 }}" ><span class="pswp__navigation__dot{% if forloop.first %} pswp__navigation__dot--is-active{% endif %}">{{ forloop.index0 }}</span></button>
+      {% endfor %}
+    </div>
+  {% endif %}

@@ -1,0 +1,61 @@
+//   __   ___   ___ ___   _   ___ _    ___ ___
+//   \ \ / /_\ | _ \_ _| /_\ | _ ) |  | __/ __|
+//    \ V / _ \|   /| | / _ \| _ \ |__| _|\__ \
+//     \_/_/ \_\_|_\___/_/ \_\___/____|___|___/
+//
+// =========================================================================================
+// =========================================================================================
+//
+// Use this stylesheet to declare site-wide variables. If you are declaring a default
+// property for a CSS value, use `_default.scss` instead. If you are declaring a
+// color, use `_color.scss` instead. If you are declaring a font size, use
+// `_font-sizes.scss` instead. If you are declaring a z-index, use `_z-index.scss`
+// instead. Functions, mixins, and placeholders should be included in their
+// respective stylesheets.
+
+$title-size: 33px;
+$title-height: 50px;
+$title-height-after-card-breakaway: 70px;
+
+$header-height: 60px;
+$header-height-desktop: 80px;
+
+$sub-header-height: 45px;
+$sub-header-height-card-breakaway: 80px;
+$sub-header-height-card-flip: 90px;
+
+$page-top: 132px;
+$page-has-description-top: 154px;
+
+$avatar-size: 28px;
+$avatar-size-card-breakaway: 45px;
+$avatar-size-card-flip: 90px;
+
+$button-horizontal-padding: 12px;
+$button-vertical-padding: 30px;
+
+// image gallery variables
+$wrapper-size: 8px;
+$dot-size: 5px;
+$active-dot-size: 9px;
+$close-button-size: 16px;
+
+$popover-tip-length: 10px;
+$social-popover-width: 68px;
+
+$text-container-max-height: 66px;
+$text-container-max-height-after-card-breakaway: 86px;
+
+$content-max-width: 960px;
+$grid-max-width: 960px;
+
+$social-icon-size: 22px;
+$social-icon-large-size: 36px;
+$social-icon-offset: 15px; // Offset value is half the width of `icon--30`, which is 30px.
+
+$card-max-width: 550px;
+$card-header-height: 160px;
+
+$footer-column-spacing: 150px;
+
+$font-size--404: 116px;

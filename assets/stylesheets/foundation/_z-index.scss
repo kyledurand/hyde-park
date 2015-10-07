@@ -1,0 +1,38 @@
+//    ____  ___ _  _ ___  _____  __
+//   |_  /_|_ _| \| |   \| __\ \/ /
+//    / /___| || .` | |) | _| >  <
+//   /___| |___|_|\_|___/|___/_/\_\
+//
+// =========================================================================================
+// =========================================================================================
+//
+// `z-index` is managed in this centralized stylesheet to create a manageable
+// and self-documenting system. The process to add z-indexes is as follows:
+//
+// 1. For each stacking context (a set of elements for which you would like
+//    to maintain the stacking order), create a new map with a descriptive
+//    variable name.
+// 2. Add entries to the map for each element that you would like to control the
+//    stacking context of. The delta between elements should not matter, only
+//    the numeric order. Elements with higher numbers will stack on top of
+//    elements with lower z-indexes.
+// 3. `@include z-index` in your stylesheet with the name of the component you are
+//    setting z-index for and the map name defined in step 1.
+// 4. Profit.
+
+$Z-INDEXES: (
+  header : (
+    header-large: 10
+  ),
+  footer : (
+    footer-large: 10
+  )
+);
+
+@mixin z-index($element, $context) {
+  $index: map-get(map-get($Z-INDEXES, $context), $element);
+
+  @if $index {
+    z-index: $index;
+  }
+}

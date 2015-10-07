@@ -1,0 +1,16 @@
+@mixin less-than-IE9 {
+  .lt-ie9 & { @content; }
+}
+
+@mixin IE9-or-less {
+  .ie9 & { @content; }
+  .lt-ie9 & { @content; }
+}
+
+@mixin IE9-only {
+  .ie9 & { @content; }
+}
+
+@mixin IE10-only {
+  .ie10 & { @content; }
+}

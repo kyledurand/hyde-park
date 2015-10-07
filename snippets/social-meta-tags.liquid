@@ -1,0 +1,52 @@
+{% if template contains 'product' or single_product == true %}
+  {% comment %} Facebook and Pinterest Open Graph Data {% endcomment %}
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="{{ product.title | strip_html | escape }}">
+  {% if product.description == blank %}
+    <meta name="og:description" content="{{ shop.name | strip_html | truncatewords: 140, '' | escape }}">
+  {% else %}
+    <meta property="og:description" content="{{ product.description | strip_html | escape }}">
+  {% endif %}
+  {% for image in product.images limit:3 %}
+    <meta property="og:image" content="http:{{ image.src | img_url: 'grande' }}">
+    <meta property="og:image:secure_url" content="https:{{ image.src | img_url: 'grande' }}">
+  {% endfor %}
+  <meta property="og:availability" content="{% if product.available %}instock{% else %}oos{% endif %}">
+  {% if product.compare_at_price > product.price %}
+    <meta property="og:price:amount" content="{{ product.compare_at_price | money_without_currency | strip_html | escape }}">
+    <meta property="og:sale_price:amount" content="{{ product.price | money_without_currency | strip_html | escape }}">
+    <meta property="og:sale_price:currency" content="{{ shop.currency }}">
+  {% else %}
+    <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html | escape }}">
+  {% endif %}
+  <meta property="og:price:currency" content="{{ shop.currency }}">
+  <meta property="og:url" content="{{ case_sensitive_canonical_url }}">
+  <meta property="og:site_name" content="{{ shop.name }}">
+  {% comment %} Twitter Card Meta Data {% endcomment %}
+  {% if settings.twittercard_handle != blank %}
+    {% comment %}This will have to be replaced with the liquid drop version as it won't be a setting{% endcomment %}
+    <meta name="twitter:site" content="{{settings.twittercard_handle}}">
+  {% endif %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ product.title | strip_html | escape }}">
+  {% if product.description == blank %}
+    <meta name="twitter:description" content="{{ shop.name | strip_html | truncatewords: 140, '' | escape }}">
+  {% else %}
+    <meta name="twitter:description" content="{{ product.description | strip_html | truncatewords: 140, '' | escape }}">
+  {% endif %}
+  <meta name="twitter:image" content="https:{{ product.featured_image.src | img_url: 'medium' }}">
+  <meta name="twitter:image:width" content="240">
+  <meta name="twitter:image:height" content="240">
+{% elsif template contains 'article' %}
+  {% comment %} Twitter Card for Blog {% endcomment %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ article.title }}">
+  <meta name="twitter:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 140, '' | escape }}">
+  {% if article.content contains "<img" %}
+    {% assign src = article.content | split: 'src="' %}
+    {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' | remove: 'https:' %}
+    {% if src %}
+      <meta property="twitter:image" content="{{ src }}">
+    {% endif %}
+  {% endif %}
+{% endif %}

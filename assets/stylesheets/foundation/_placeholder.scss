@@ -1,0 +1,98 @@
+//    ___ _      _   ___ ___ _  _  ___  _    ___  ___ ___  ___
+//   | _ \ |    /_\ / __| __| || |/ _ \| |  |   \| __| _ \/ __|
+//   |  _/ |__ / _ \ (__| _|| __ | (_) | |__| |) | _||   /\__ \
+//   |_| |____/_/ \_\___|___|_||_|\___/|____|___/|___|_|_\|___/
+//
+// =========================================================================================
+// =========================================================================================
+//
+// The following placeholders can be extended to add common style traits to
+// elements. Only add a placeholder for common behavior that does not have
+// any variable component (for those situations, a mixin is better suited).
+
+
+
+//    ___ ___ ___ ___ _      ___   __
+//   |   \_ _/ __| _ \ |    /_\ \ / /
+//   | |) | |\__ \  _/ |__ / _ \ V /
+//   |___/___|___/_| |____/_/ \_\_|
+//
+// =========================================================
+// Placeholders providing common display/ positioning patterns.
+
+// Add an element to its own composite layer. Use sparingly!
+%composite-layer {
+  backface-visibility: hidden;
+}
+
+// Clear any contained floats.
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Center the content in its container using absolute positioning. Make
+// sure the parent has `position: relative`.
+%center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Force the element to fully cover its container. Make
+// sure the parent has `position: relative`.
+%cover-all {
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+// Add an empty piece of `content` positioned absolutely. Make
+// sure the parent has `position: relative`.
+%content {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+
+
+//    _____ ___  _   _  ___ _  _
+//   |_   _/ _ \| | | |/ __| || |
+//     | || (_) | |_| | (__| __ |
+//     |_| \___/ \___/ \___|_||_|
+//
+// ======================================================
+// Placeholders to help with touch devices.
+
+// Force the element to scroll nicely on mobile.
+%touch-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Prevent the user from selecting the content.
+%no-select {
+  user-select: none;
+}
+
+
+
+//    _______   _____ ___
+//   |_   _\ \ / / _ \ __|
+//     | |  \ V /|  _/ _|
+//     |_|   |_| |_| |___|
+//
+// ======================================================
+// Placholders to add nice features to text content.
+
+// Force overflow to be shown with an ellipse.
+%ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

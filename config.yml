@@ -1,0 +1,46 @@
+---
+# THEME GEM USAGE - visit https://github.com/Shopify/shopify_theme
+# Get your api_key and password at your-url.myshopify.com/admin/apps/private
+# kyle-durand.myshopify.com sello theme
+  # :api_key: e074e14f0eccb8bab2b4364a90edbf4e
+  # :password: 6b119eee3ee3adcd0713d7ba8caa66b5
+  # :store: kyle-durand.myshopify.com
+  # :theme_id:
+  # :ignore_files:
+  # :whitelist_files:
+  # - layout/emails/email_layout.liquid
+  # - settings_data.json
+  # - logo.png
+
+# jane-smith - won't work with sello domain. API restrictions
+#   :api_key: e9f99fbd911c0f1500300bb85835d71c
+#   :password: 38865c548f779b8e9f4111f0519cf59c
+#   :store: jane-smith.sello.com
+#   :theme_id:
+#   :ignore_files:
+  # :whitelist_files:
+  # - layout/emails/email_layout.liquid
+  # - settings_data.json
+  # - logo.png
+
+# kyle.sello.com - won't work with sello domain. API restrictions
+  # :api_key: b2ec0613ed8abe4c78f3f79c4777b72e
+  # :password: 71f7f30226d66f1afeecacfb4dad13d3
+  # :store: kyle.sello.com
+  # :theme_id:
+  # :ignore_files:
+  # :whitelist_files:
+  # - layout/emails/email_layout.liquid
+  # - settings_data.json
+  # - logo.png
+
+# Plusstuff - Hyde Park
+  :api_key: e81faf27dd8c42cf5559bfff2bf43e12
+  :password: ef4bd63e698d503682ee38b02b7b0922
+  :store: plusstuff.myshopify.com
+  :theme_id:
+  # :ignore_files:
+  # :whitelist_files:
+  # - layout/emails/email_layout.liquid
+  # - settings_data.json
+  # - logo.png

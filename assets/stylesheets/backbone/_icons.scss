@@ -1,0 +1,107 @@
+//    ___ ___ ___  _  _ ___
+//   |_ _/ __/ _ \| \| / __|
+//    | | (_| (_) | .` \__ \
+//   |___\___\___/|_|\_|___/
+//
+// =========================================================================================
+// =========================================================================================
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon--light {
+  * {
+    color: color(icon-light);
+  }
+}
+
+.icon--dark {
+  * {
+    color: color(icon-dark);
+  }
+}
+
+.icon__text {
+  vertical-align: middle;
+}
+
+.icon__text--side-margin {
+  margin-left: 6px;
+}
+
+.icon--10 {
+  width: 10px;
+  height: 10px;
+  vertical-align: 0px; // Hack to vertically align smaller icons with text.
+}
+
+.icon--16 {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--20 {
+  width: 20px;
+  height: 20px;
+}
+
+.icon--30 {
+  width: 30px;
+  height: 30px;
+}
+
+
+/*================ Rotating Icons ================*/
+
+.icon--rotate-90 {
+  transform: rotate(90deg);
+}
+
+.icon--rotate-180 {
+  transform: rotate(180deg);
+}
+
+.icon--rotate-270 {
+  transform: rotate(270deg);
+}
+
+
+/*============================================================================
+  Special Icon Modifiers
+    * icons that change sizes at different breakpoints
+    * icons that have a specific color in specific areas
+==============================================================================*/
+
+.icon--social {
+  width: $social-icon-size;
+  height: $social-icon-size;
+
+  @include after(stack-large) {
+    width: $social-icon-large-size;
+    height: $social-icon-large-size;
+  }
+}
+
+.facebook--blue {
+  * {
+    color: color(facebook-blue);
+  }
+}
+
+.twitter--blue {
+  * {
+    color: color(twitter-blue);
+  }
+}
+
+.close--white {
+  * {
+    color: color(white);
+  }
+}
+
+.icon--placeholder {
+  max-width: 100%;
+}

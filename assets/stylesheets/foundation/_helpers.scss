@@ -1,0 +1,64 @@
+//    _  _ ___ _    ___ ___ ___  ___
+//   | || | __| |  | _ \ __| _ \/ __|
+//   | __ | _|| |__|  _/ _||   /\__ \
+//   |_||_|___|____|_| |___|_|_\|___/
+//
+// =========================================================================================
+// =========================================================================================
+//
+// Declare classes here that are not related to an individual component
+// but that must, because they have to be toggle-able, be separate classes.
+//
+// Do **not** abuse this! Only use helpers when there is no other reasonable
+// way to achieve your desired effect. If the helper behavior belongs to a
+// "group" of some sort (for example, typography) or is made necessary because
+// of the requirements of a given component, namespace the helper under those
+// components instead.
+
+// Prevent any transitions on this element.
+.helpers--kill-transitions {
+  transition: none !important;
+}
+
+// Force hide
+.helpers--hidden {
+  display: none !important;
+}
+
+// Hidden, but still accessible to screenreaders
+.helpers--visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Pushes text down to vertically centre for when a text is all caps (no decsenders)
+.helpers--top-nudge {
+  position: relative;
+  top: 0.15em;
+}
+
+.helpers--is-transitioning {
+  display: block !important;
+  visibility: visible !important;
+}
+
+// Hide/show elements in IE8
+
+.lt-ie9 {
+  .helpers--hidden-in-ie8 {
+    display: none;
+  }
+}
+
+.lt-ie9 {
+  .helpers--show-in-ie8-only {
+    display: inline-block !important; //important required to override helpers--hidden
+  }
+}
+
