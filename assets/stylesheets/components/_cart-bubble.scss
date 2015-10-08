@@ -1,11 +1,14 @@
+$cart-bubble-color: color(cart-bubble);
+
 .icon--cart {
   position: relative;
 }
 
 .cart-bubble {
-  color: color(cart-bubble);
+  color: $cart-bubble-color;
 }
 
 .cart-bubble__item-count {
-  font-size: 64px;
+  font-size: 4em;
+  color: color-control($cart-bubble-color);
 }

@@ -1,0 +1,7 @@
+.hero {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 50vh;
+  background: url({{ "hero.jpg" | asset_url }}) no-repeat bottom center;
+}

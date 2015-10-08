@@ -2,8 +2,20 @@
 <header class="header">
   <div class="header__logo">
     {% include 'inline-icon' with 'logo, logo' %}
-
-    {% include 'inline-icon' with 'cart, icon--30, icon--dark' %}
-
   </div>
+
+  <menu class="header__menu type--right">
+    <menuitem class="header__menu-item">- Menu</menuitem>
+    <menuitem class="header__menu-item">Exclusives</menuitem>
+    <menuitem class="header__menu-item">Headwear</menuitem>
+    <menuitem class="header__menu-item">Outerwear</menuitem>
+    <menuitem class="header__menu-item">Fleece</menuitem>
+    <menuitem class="header__menu-item">Tops</menuitem>
+    <menuitem class="header__menu-item">Tees</menuitem>
+    <menuitem class="header__menu-item">Bottoms</menuitem>
+    <menuitem class="header__menu-item">Accessories</menuitem>
+    {% include 'inline-icon' with 'search, icon--30, icon--light' %}
+    {% include 'inline-icon' with 'share, icon--30, icon--light' %}
+    {% include 'inline-icon' with 'cart, icon--30, icon--light' %}
+  </menu>
 </header>

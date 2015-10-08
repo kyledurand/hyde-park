@@ -1,0 +1,24 @@
+$logo-size: 58px;
+
+.header {
+  @extend %clearfix;
+  position: fixed;
+  width: 100%;
+  display: block;
+  padding: default(spacing);
+}
+
+.header__logo {
+  float: left;
+  width: $logo-size;
+  height: $logo-size;
+}
+
+.header__menu {
+  float: right;
+  margin: 0;
+}
+
+.header__menu-item {
+  display: block;
+}

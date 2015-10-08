@@ -13,6 +13,8 @@
 // instead. Functions, mixins, and placeholders should be included in their
 // respective stylesheets.
 
+// OLD
+
 $title-size: 33px;
 $title-height: 50px;
 $title-height-after-card-breakaway: 70px;
@@ -59,3 +61,8 @@ $card-header-height: 160px;
 $footer-column-spacing: 150px;
 
 $font-size--404: 116px;
+
+// NEW
+
+$text-light: color(text-light);
+$text-dark: color(text-dark);

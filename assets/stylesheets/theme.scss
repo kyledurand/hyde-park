@@ -17,9 +17,9 @@
 // Anything that provides no visual styles of their own,
 // but instead allow other styles to be created/ applied.
 
+@import "foundation/colors";
 @import "foundation/variables";
 @import "foundation/functions";
-@import "foundation/colors";
 @import "foundation/z-index";
 @import "foundation/font-sizes";
 @import "foundation/breakpoints";
@@ -55,6 +55,7 @@
 @import "components/footer";
 @import "components/product-grid";
 @import "components/modals";
+@import "components/home";
 @import "components/404";
 @import "components/cart-bubble";
 
