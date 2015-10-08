@@ -1,6 +1,55 @@
 module.exports = (grunt) ->
+
+  # Global vars
+  gulp = require 'gulp'
+  cssimport = require 'gulp-cssimport'
+  paths =
+    css: 'src/stylesheets/**/*.*'
+    concatFiles: [
+      'src/stylesheets/*.*'
+    ]
+    images: 'assets/*.{png,jpg,gif}'
+    assets: 'assets/'
+    allAssets: [
+      'assets/*.*',
+      'config/*',
+      'layout/*',
+      'locales/*',
+      'snippets/*',
+      'templates/**/*'
+    ]
+
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
+
+    # Helper methods
+    notify:
+      zip:
+        options:
+          message: 'Zip file created'
+
+    # Shopify theme_gem methods
+    exec:
+      theme_watch:
+        command: 'bundle exec theme watch'
+      deploy:
+        command: 'bundle exec theme upload'
+
+    # File manipulation
+    gulp:
+      concat: ->
+        return gulp.src(paths.concatFiles)
+          .pipe(cssimport())
+          .pipe(gulp.dest(paths.assets))
+
+    imagemin:
+      dynamic:
+        options:
+          optimizationLevel: 3
+        files: [{
+          expand: true
+          src: paths.images
+        }]
 
     sass:
       options:
@@ -44,7 +93,7 @@ module.exports = (grunt) ->
     compress:
       main:
         options:
-          archive: 'Sello.zip'
+          archive: 'hyde.zip'
         files: [
           {src: ['assets/*'], dest: '/', filter: 'isFile'},
           {src: ['config/*'], dest: '/', filter: 'isFile'},
@@ -55,8 +104,8 @@ module.exports = (grunt) ->
 
     watch:
       css:
-        files: "assets/stylesheets/**/*.scss"
-        tasks: ["sass", "autoprefixer"]
+        files: paths.css
+        tasks: ["sass", "autoprefixer", "gulp"]
         options:
           spawn: false
 
@@ -70,6 +119,7 @@ module.exports = (grunt) ->
       default:
         tasks: [
           "watch"
+          "exec"
           "shell:theme_watch"
         ]
         options:

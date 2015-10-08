@@ -6,7 +6,6 @@
 // ======================================================
 // Any third party styles.
 
-@import "vendor/photoswipe";
 
 //    ___ ___  _   _ _  _ ___   _ _____ ___ ___  _  _
 //   | __/ _ \| | | | \| |   \ /_\_   _|_ _/ _ \| \| |
@@ -17,17 +16,10 @@
 // Anything that provides no visual styles of their own,
 // but instead allow other styles to be created/ applied.
 
-@import "foundation/colors";
-@import "foundation/variables";
-@import "foundation/functions";
-@import "foundation/z-index";
-@import "foundation/font-sizes";
-@import "foundation/breakpoints";
-@import "foundation/placeholder";
-@import "foundation/mixins";
-@import "foundation/defaults";
-@import "foundation/helpers";
-@import "foundation/old-ie";
+
+
+
+
 
 //    ___   _   ___ _  _____  ___  _  _ ___
 //   | _ ) /_\ / __| |/ / _ )/ _ \| \| | __|
@@ -37,10 +29,7 @@
 // ======================================================
 // Styles that apply to the page very broadly.
 
-@import "backbone/base";
-@import "backbone/layout";
-@import "backbone/type";
-@import "backbone/icons";
+
 
 //     ___ ___  __  __ ___  ___  _  _ ___ _  _ _____ ___
 //    / __/ _ \|  \/  | _ \/ _ \| \| | __| \| |_   _/ __|
@@ -50,14 +39,8 @@
 // ======================================================
 // Individual components within the page.
 
-@import "components/button";
-@import "components/header";
-@import "components/footer";
-@import "components/product-grid";
-@import "components/modals";
-@import "components/home";
-@import "components/404";
-@import "components/cart-bubble";
+@import url("components/home.scss.liquid");
+
 
 
 //    ___ _  _   _   __  __ ___
@@ -68,4 +51,4 @@
 // ======================================================
 // Use this as little as possible for quick fixes.
 
-@import "shame";
+
